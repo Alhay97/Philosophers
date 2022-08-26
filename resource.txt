@@ -1,12 +1,19 @@
- For functions for Philosophers
+search 
+
 
 1. Forks
-2. usleep
-3. gettimeofday
-4.pthread_create 
-5. pthread_detach 
-6. pthread_join 
-7. pthread_mutex_init 
-8. pthread_mutex_destroy
-9. pthread_mutex_lock
-10. pthread_mutex_unlock 
+2. threads
+3. mutexes
+
+
+ For functions for Philosophers
+
+1. usleep
+2. gettimeofday
+3. pthread_create 
+4. pthread_detach 
+5. pthread_join 
+6. pthread_mutex_init 
+7. pthread_mutex_destroy
+8. pthread_mutex_lock
+9. pthread_mutex_unlock 
