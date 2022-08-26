@@ -1,0 +1,12 @@
+ For functions for Philosophers
+
+1. Forks
+2. usleep
+3. gettimeofday
+4.pthread_create 
+5. pthread_detach 
+6. pthread_join 
+7. pthread_mutex_init 
+8. pthread_mutex_destroy
+9. pthread_mutex_lock
+10. pthread_mutex_unlock 
