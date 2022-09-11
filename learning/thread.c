@@ -7,7 +7,8 @@ void	fun(void);
 
 void	*func(void *arg)
 {
-	pthread_detach(pthread_self()); //detach the current thread from the called thread
+	//detach the current thread from the called threads
+	pthread_detach(pthread_self());
 	printf("inside the thread\n");
 	pthread_exit(NULL);
 }
@@ -16,18 +17,36 @@ void	fun(void)
 {
 	pthread_t	alhai;
 
-	pthread_create(&alhai, NULL, &func, NULL); // it is where a new thread is created
+	// it is where a new thread is created
+	pthread_create(&alhai, NULL, &func, NULL);
 	printf("this is the line to be printed"
 		" before the thread is terminated\n");
-	if (pthread_equal(alhai, pthread_self())) //checks if the created thread is same as the current thread
+
+		//checks if the created thread is same as the current thread
+	if (pthread_equal(alhai, pthread_self()))
 		printf("the thread are equal\n");
 	else
 		printf("the thread are not equal\n");
-	pthread_join(alhai, NULL); //waiting for the just created thread to terminate
+
+	//waiting for the just created thread to terminated
+	pthread_join(alhai, NULL);
 	printf("this line will be printed after"
 		"the thread is terminated \n");
-	pthread_exit(NULL); //used to terminate the thread
+
+	//used to terminate the thread
+	pthread_exit(NULL);
 }
+
+//the output for the above program will be:
+/*
+this is the line to be printed before the thread is terminated
+
+inside the thread
+
+the thread are not equal
+
+this line will be printed afterthe thread is terminated
+*/
 
 int	main(void)
 {
