@@ -15,6 +15,7 @@ void	*func(void *arg)
 
 void	fun(void)
 {
+	//store the thread
 	pthread_t	alhai;
 
 	// it is where a new thread is created
@@ -42,6 +43,7 @@ void	fun(void)
 this is the line to be printed before the thread is terminated
 
 inside the thread
+
 
 the thread are not equal
 

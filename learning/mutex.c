@@ -39,7 +39,6 @@ int main(void)
     pthread_join(tid[1], NULL);
 }
 
-
 /*
 the output is :
 
@@ -56,8 +55,13 @@ the output is :
 /*
 the reason is:
 1-> thread 1 is being processing while the scheduler scheduled thread 2
-2-> if reason (1) is true then the value of ("counter") variable got incrmented agian before job 1 has ended
-3-> 
-
+2-> if reason (1) is true then the value of ("counter") variable got incrmented 
+    again before job 1 has ended
+3-> when the first job has ended, the wrong value of counter has been produced the log "job 2 has ended"
+    followed by another "job 2 has ended" as it is dependent on the sechdular.
+4-> the problem is the wrong value of ("counter") becuase of the usage ("counter") variable by a second thread
+    when the first thread was using or about to use it
+5-> lack of synchronization between the threads while using the shared resource ‘counter’ caused the problems or in one word 
+    we can say that this problem happened due to ‘Synchronization problem’ between two threads
 */
 
