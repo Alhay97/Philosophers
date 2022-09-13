@@ -38,3 +38,26 @@ int main(void)
 	pthread_join(tid[0], NULL);
     pthread_join(tid[1], NULL);
 }
+
+
+/*
+the output is :
+
+ Job 1 has begun
+
+ Job 2 has begun
+
+ Job 2 has ended
+
+ Job 2 has ended
+
+*/
+
+/*
+the reason is:
+1-> thread 1 is being processing while the scheduler scheduled thread 2
+2-> if reason (1) is true then the value of ("counter") variable got incrmented agian before job 1 has ended
+3-> 
+
+*/
+
