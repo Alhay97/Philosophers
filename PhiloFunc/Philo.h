@@ -1,4 +1,3 @@
-
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -8,8 +7,7 @@
 # include <pthread.h>
 # include <stdlib.h>
 
-
-void	check_sum(unsigned long sum, int sign, const char *str);
+int	check_sum(unsigned long sum, int sign, const char *str);
 
 int     ft_atoi(const char *str);
 
@@ -18,7 +16,5 @@ void	ft_putchar_fd(int c, int fd);
 void    ft_putstr_fd(char *str, int fd);
 
 void	ft_putendl_fd(char *str, int fd);
-
-
 
 #endif

@@ -1,6 +1,4 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "Philo.h"
 
 
 int	check_sum(unsigned long sum, int sign, const char *str)
