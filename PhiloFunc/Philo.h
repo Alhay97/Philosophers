@@ -6,6 +6,7 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <stdlib.h>
+# include <sys/time.h>
 
 //create an array of struct for each philospheres
 // arguments for Philo->1. a.out 
@@ -18,13 +19,19 @@
 
 typedef struct s_philo
 {
+    pthread_t philo_thread;
     int num_philo;
     int time_die;
     int time_eat;
     int time_sleep;
     int num_cycle;
-
 }   t_philo;
+
+typedef struct s_time
+{
+    time_t time;
+    suseconds_t time2;
+}   t_time;
 
 int	check_sum(unsigned long sum, int sign, const char *str);
 
