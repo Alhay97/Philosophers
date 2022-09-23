@@ -8,11 +8,23 @@
 # include <stdlib.h>
 
 //create an array of struct for each philospheres
+// arguments for Philo->1. a.out 
+//						2. number of philosphers 
+// 						3.Time to die
+// 						4.Time to Eat
+//						5.Time to sleep
+//						6.number of cycles 
+// save it all in a structure
 
-typedef struct philosphers
+typedef struct s_philo
 {
-    
-};
+    int num_philo;
+    int time_die;
+    int time_eat;
+    int time_sleep;
+    int num_cycle;
+
+}   t_philo;
 
 int	check_sum(unsigned long sum, int sign, const char *str);
 
