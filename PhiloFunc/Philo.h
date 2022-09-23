@@ -7,6 +7,13 @@
 # include <pthread.h>
 # include <stdlib.h>
 
+//create an array of struct for each philospheres
+
+typedef struct philosphers
+{
+    
+};
+
 int	check_sum(unsigned long sum, int sign, const char *str);
 
 int     ft_atoi(const char *str);

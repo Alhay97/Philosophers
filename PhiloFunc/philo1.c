@@ -1,6 +1,9 @@
 //first  solution for Philo
 #include "Philo.h"
 
+// arguments for Philo-> 1. a.out ->//2. number of philosphers ->// 3.Time to die ->// 4.Time to Eat ->//5.Time to sleep ->//6.number of cycles 
+
+
 int main(int arc, char **arv)
 {
 	int i;
