@@ -1,0 +1,5 @@
+note for 24/9/2022
+
+1. Check for time
+2. Create multiple structs each struct belongs to each Philo created
+3. Pass each struct to its own thread (using array of structs)
