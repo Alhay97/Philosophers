@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "__locale": "c"
-    }
+		"__locale": "c",
+		"memory": "c",
+		"utility": "c"
+	}
 }
