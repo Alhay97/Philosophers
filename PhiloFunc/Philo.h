@@ -16,26 +16,30 @@
 //						6.number of cycles
 // save it all in a structure
 
-typedef struct s_info
+typedef struct s_philo
 {
-    int num_philo;
+	int index;
+	pthread_t	thread_philo;
+	long long last_meal; //last time the philo second
+	int left_fork;
+	int right_fork;
+	unsigned int time_ate; // how many times philo ate
+	struct s_alhai	*alhai;
+
+} t_philo;
+
+typedef struct s_alhai
+{
+	int num_philo;
     int time_die;
     int time_eat;
     int time_sleep;
     int num_cycle;
 	long long start_time;
-	struct s_philo *philo;
-}   t_info;
+	t_philo			philo[250];
+	pthread_mutex_t	forks_mutex[250];
 
-typedef struct s_philo
-{
-	t_info info;
-	int index;
-	long long last_meal; //last time the philo second
-	int left_fork;
-	int right_fork;
-	unsigned int time_ate; // how many times philo ate
-} t_philo;
+}			t_alhai;
 
 int	check_sum(unsigned long sum, int sign, const char *str);
 

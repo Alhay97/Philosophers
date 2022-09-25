@@ -16,7 +16,7 @@ int main(int arc, char **arv)
 	int i;
 	int j;
 	int *ab;
-	t_philo philo;
+	t_alhai philo;
 
 	ab = malloc(sizeof(int) * arc-1);
 	i = 0;
@@ -24,7 +24,7 @@ int main(int arc, char **arv)
 	arv++;
     while (i < arc - 1)
     {
-		if (arc < 5 || arc > 6)
+		if (arc < 5 || arc > 6 || arc == 1)
 			return(0);
 		else
 		{

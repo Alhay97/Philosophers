@@ -23,12 +23,12 @@ void alhai_sleep(int duration)
 
 
 
-int main()
-{
-	long long start_time = current_time();
-	long long end_time;
-	alhai_sleep(2000);
-	end_time = current_time();
+// int main()
+// {
+// 	long long start_time = current_time();
+// 	long long end_time;
+// 	alhai_sleep(2000);
+// 	end_time = current_time();
 
-	printf("%lld\n",	end_time - start_time);
-}
+// 	printf("%lld\n",	end_time - start_time);
+// }
