@@ -24,14 +24,17 @@ typedef struct s_info
     int time_sleep;
     int num_cycle;
 	long long start_time;
+	struct s_philo *philo;
 }   t_info;
 
 typedef struct s_philo
 {
 	t_info info;
 	int index;
-
-
+	long long last_meal; //last time the philo second
+	int left_fork;
+	int right_fork;
+	unsigned int time_ate; // how many times philo ate
 } t_philo;
 
 int	check_sum(unsigned long sum, int sign, const char *str);
