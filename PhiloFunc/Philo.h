@@ -2,7 +2,6 @@
 # define PHILO_H
 
 # include <stdio.h>
-# include <math.h>
 # include <unistd.h>
 # include <pthread.h>
 # include <stdlib.h>
@@ -17,15 +16,23 @@
 //						6.number of cycles
 // save it all in a structure
 
-typedef struct s_philo
+typedef struct s_info
 {
-    pthread_t philo_thread;
     int num_philo;
     int time_die;
     int time_eat;
     int time_sleep;
     int num_cycle;
-}   t_philo;
+	long long start_time;
+}   t_info;
+
+typedef struct s_philo
+{
+	t_info info;
+	int index;
+
+
+} t_philo;
 
 int	check_sum(unsigned long sum, int sign, const char *str);
 
