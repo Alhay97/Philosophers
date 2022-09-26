@@ -11,37 +11,44 @@
 
 // https://c-for-dummies.com/blog/?p=4236
 
-int main(int arc, char **arv)
+int  ft_parser(int arc, char **arv, t_alhai *philo, int *ab)
 {
 	int i;
-	int j;
-	int *ab;
-	t_alhai philo;
 
 	ab = malloc(sizeof(int) * arc-1);
 	i = 0;
-	j = 0;
 	arv++;
     while (i < arc - 1)
     {
 		if (arc < 5 || arc > 6 || arc == 1)
-			return(0);
+			return(-1);
 		else
 		{
 			if ((ab[i] = ft_atoi(arv[i])) < 0)
 			{
 				printf("there is an error number\n");
-				return (0);
+				return (-1);
 			}
 		}
 		i++;
 	}
 
-	philo.num_philo = ab[0];
-    philo.time_die = ab[1];
-    philo.time_eat = ab[2];
-    philo.time_sleep = ab[3];
-    philo.num_cycle = ab[4];
+	philo->num_philo = ab[0];
+    philo->time_die = ab[1];
+    philo->time_eat = ab[2];
+    philo->time_sleep = ab[3];
+    philo->num_cycle = ab[4];
+	return (0);
+}
+
+int main(int arc, char **arv)
+{
+	int i;
+	int *ab;
+	t_alhai philo;
+
+	if(ft_parser(arc, arv, &philo, ab) == -1)
+		return(-1);
 	printf("number of Philo-> %d\n", philo.num_philo);
 	printf("time to die-> %d\n", philo.time_die);
     printf("time to eat-> %d\n", philo.time_eat);
