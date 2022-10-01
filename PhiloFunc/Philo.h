@@ -19,7 +19,6 @@
 typedef struct s_philo
 {
 	int index;
-	pthread_t	thread_philo;
 	long long last_meal; //last time the philo second
 	int left_fork;
 	int right_fork;
@@ -30,6 +29,7 @@ typedef struct s_philo
 
 typedef struct s_alhai
 {
+	pthread_t	threadz[250];
 	int num_philo;
     int time_die;
     int time_eat;
@@ -38,8 +38,7 @@ typedef struct s_alhai
 	long long start_time;
 	t_philo			philo[250];
 	pthread_mutex_t	forks_mutex[250];
-
-}			t_alhai;
+}		t_alhai;
 
 int	check_sum(unsigned long sum, int sign, const char *str);
 
@@ -50,5 +49,11 @@ void	ft_putchar_fd(int c, int fd);
 void    ft_putstr_fd(char *str, int fd);
 
 void	ft_putendl_fd(char *str, int fd);
+
+void init_philo(t_alhai *alhay);
+
+void *thread_func();
+
+void athread(t_alhai *alhay);
 
 #endif

@@ -41,6 +41,7 @@ int  ft_parser(int arc, char **arv, t_alhai *philo, int *ab)
 	return (0);
 }
 
+
 int main(int arc, char **arv)
 {
 	int i;
@@ -49,11 +50,12 @@ int main(int arc, char **arv)
 
 	if(ft_parser(arc, arv, &philo, ab) == -1)
 		return(-1);
-	printf("number of Philo-> %d\n", philo.num_philo);
-	printf("time to die-> %d\n", philo.time_die);
-    printf("time to eat-> %d\n", philo.time_eat);
-   	printf("time to sleep-> %d\n", philo.time_sleep);
-    printf("number of cycles for each philo> %d\n", philo.num_cycle);
+	init_philo(&philo);
+	while (i < philo.num_philo)
+	{
+		printf("%d index", philo.philo[i++].index);
+	}
+	athread(&philo);
 
 	return 0;
 }
