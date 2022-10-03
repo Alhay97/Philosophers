@@ -1,10 +1,16 @@
 #include "Philo.h"
 
+
+/*
+1. create a infinte while loop
+2.start with taking forks and eating
+*/
+
 void *thread_func(void *data)
 {
 	t_philo *philo;
 
-	philo = (t_philo *)data;
+	philo = (t_philo *)data; // <-- continue here
 	printf(" %d thread reached here \n", philo->index);
 	return NULL;
 }
