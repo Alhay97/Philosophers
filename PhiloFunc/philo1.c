@@ -41,6 +41,13 @@ int  ft_parser(int arc, char **arv, t_alhai *philo, int *ab)
 	return (0);
 }
 
+void print_index(t_alhai *philo)
+{
+	int i = 0;
+	while (i < philo->num_philo)
+		printf("index -> %d \n", philo->philo[i++].index);
+}
+
 
 int main(int arc, char **arv)
 {
@@ -51,10 +58,10 @@ int main(int arc, char **arv)
 	if(ft_parser(arc, arv, &philo, ab) == -1)
 		return(-1);
 	init_philo(&philo);
-	while (i < philo.num_philo)
-	{
-		printf("%d index", philo.philo[i++].index);
-	}
+	// while (i < philo.num_philo)
+	// {
+	// 	printf("%d index \n", philo.philo[i++].index);
+	// }
 	athread(&philo);
 
 	return 0;
