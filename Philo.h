@@ -29,31 +29,53 @@ typedef struct s_philo
 
 typedef struct s_alhai
 {
-	pthread_t	threadz[250];
+	pthread_t	threadz[200];
 	int num_philo;
     int time_die;
     int time_eat;
     int time_sleep;
     int num_cycle;
 	long long start_time;
-	t_philo			philo[250];
-	pthread_mutex_t	forks_mutex[250];
+	int 			forks[200];
+	t_philo			philo[200];
+	pthread_mutex_t	forks_mutex[200];
+	pthread_mutex_t	mutex_print;
 }		t_alhai;
 
-int	check_sum(unsigned long sum, int sign, const char *str);
+void drop_fork(t_philo *philo);
 
-int     ft_atoi(const char *str);
+void philo_sleep(t_philo *philo);
 
-void	ft_putchar_fd(int c, int fd);
+void athread(t_alhai *alhay);
 
-void    ft_putstr_fd(char *str, int fd);
+void	philo_eating(t_philo *philo);
 
-void	ft_putendl_fd(char *str, int fd);
+int check_forks(t_philo *philo);
 
 void init_philo(t_alhai *alhay);
 
-void *thread_func();
+void ft_print(t_philo *philo, char c);
 
-void athread(t_alhai *alhay);
+void *thread_func(void *data);
+
+int  ft_parser(char **arv, t_alhai *alhai);
+
+void print_index(t_alhai *philo);
+
+int	check_sum(unsigned long sum, int sign, const char *str);
+
+int	ft_atoi(const char *str);
+
+void	ft_putchar_fd(int c, int fd);
+
+void ft_putstr_fd(char *str, int fd);
+
+void	ft_putendl_fd(char *str, int fd);
+
+long long current_time(void);
+
+void alhai_sleep(int duration);
+
+void mutex_create(t_alhai *alhay);
 
 #endif
