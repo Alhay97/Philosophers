@@ -57,10 +57,6 @@ int main(int arc, char **arv)
 		return(-1);
 	mutex_create(&alhai);
 	init_philo(&alhai);
-	// while (i < philo.num_philo)
-	// {
-	// 	printf("%d index \n", philo.philo[i++].index);
-	// }
 	athread(&alhai);
 
 	return 0;

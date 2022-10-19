@@ -36,7 +36,7 @@ typedef struct s_alhai
     int time_sleep;
     int num_cycle;
 	long long start_time;
-	int 			forks[200];
+	int 			*forks;
 	t_philo			philo[200];
 	pthread_mutex_t	forks_mutex[200];
 	pthread_mutex_t	mutex_print;

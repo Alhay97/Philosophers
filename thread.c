@@ -32,19 +32,19 @@ void ft_print(t_philo *philo, char c)
 {
 	long long starter;
 
-	starter = current_time() - philo->alhai->start_time;
+	starter = current_time() - philo->last_meal;
 
 	pthread_mutex_lock(&philo->alhai->mutex_print);
 	if (c == 's')
-		printf("[%lld] philosopher %d is sleeping", starter ,philo->index);
+		printf("[%lld] philosopher %d is sleeping \n", starter ,philo->index);
 	else if (c == 'e')
-		printf("[%lld] philosopher %d is eating", starter ,philo->index);
+		printf("[%lld] philosopher %d is eating\n", starter ,philo->index);
 	else if (c == 't')
-		printf("[%lld] philosopher %d is thinking", starter ,philo->index);
+		printf("[%lld] philosopher %d is thinking\n", starter ,philo->index);
 	else if (c == 'p')
 	{
-		printf("[%lld] philosopher %d has picked up a fork", starter ,philo->index);
-		printf("[%lld] philosopher %d has picked up a fork", starter ,philo->index);
+		printf("[%lld] philosopher %d has picked up a fork\n", starter ,philo->index);
+		printf("[%lld] philosopher %d has picked up a fork\n", starter ,philo->index);
 	}
 
 	pthread_mutex_unlock(&philo->alhai->mutex_print);
@@ -54,6 +54,8 @@ void ft_print(t_philo *philo, char c)
 void init_philo(t_alhai *alhay)
 {
 	int i;
+	
+	alhay->forks = malloc(sizeof(int) * alhay->num_philo);
 	i = 0;
 	while (i < alhay->num_philo)
 	{
@@ -62,6 +64,7 @@ void init_philo(t_alhai *alhay)
 		alhay->philo[i].left_fork = i;
 		alhay->philo[i].right_fork =  i + 1;
 		alhay->forks[i] = 0;
+		alhay->philo[i].alhai = alhay;
 		if (i == (alhay->num_philo -1))
 		{
 			alhay->philo[i].right_fork = 0;
@@ -98,9 +101,9 @@ void	philo_eating(t_philo *philo)
 {
 	ft_print(philo, 'p');
 	ft_print(philo, 'e');
+	philo->last_meal = current_time();
 	alhai_sleep(philo->alhai->time_eat);
 	philo->time_ate++;
-	philo->last_meal = current_time();
 }
 
 
@@ -112,7 +115,6 @@ void athread(t_alhai *alhay)
 	while (i < alhay->num_philo)
 	{
 		alhay->philo[i].last_meal = current_time();
-		printf("alhai\n");
     	pthread_create(&alhay->threadz[i], NULL, &thread_func, &alhay->philo[i]);
 		i++;
 	}
