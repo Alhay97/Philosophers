@@ -32,19 +32,19 @@ void ft_print(t_philo *philo, char c)
 {
 	long long starter;
 
-	starter = current_time() - philo->last_meal;
+	starter = current_time() - philo->alhai->start_time;
 
 	pthread_mutex_lock(&philo->alhai->mutex_print);
 	if (c == 's')
-		printf("[%lld] philosopher %d is sleeping \n", starter ,philo->index);
+		printf("\033[0;34m [%lld] philosopher %d is sleeping 😴\n", starter ,philo->index + 1);
 	else if (c == 'e')
-		printf("[%lld] philosopher %d is eating\n", starter ,philo->index);
+		printf("\033[1;31m [%lld] philosopher %d is eating 🍽️ 😋 🍽️\n", starter ,philo->index + 1);
 	else if (c == 't')
-		printf("[%lld] philosopher %d is thinking\n", starter ,philo->index);
+		printf("\033[1;33m [%lld] philosopher %d is thinking 🤔\n", starter ,philo->index + 1);
 	else if (c == 'p')
 	{
-		printf("[%lld] philosopher %d has picked up a fork\n", starter ,philo->index);
-		printf("[%lld] philosopher %d has picked up a fork\n", starter ,philo->index);
+		printf("\033[0;35m [%lld] philosopher %d has picked up a fork 🍽️\n", starter ,philo->index + 1);
+		printf("\033[0;35m [%lld] philosopher %d has picked up a fork 🍽️\n", starter ,philo->index + 1);
 	}
 
 	pthread_mutex_unlock(&philo->alhai->mutex_print);
@@ -54,7 +54,7 @@ void ft_print(t_philo *philo, char c)
 void init_philo(t_alhai *alhay)
 {
 	int i;
-	
+
 	alhay->forks = malloc(sizeof(int) * alhay->num_philo);
 	i = 0;
 	while (i < alhay->num_philo)
@@ -112,11 +112,13 @@ void athread(t_alhai *alhay)
 {
 	int i;
 	i =0;
+	alhay->start_time = current_time();
 	while (i < alhay->num_philo)
 	{
 		alhay->philo[i].last_meal = current_time();
     	pthread_create(&alhay->threadz[i], NULL, &thread_func, &alhay->philo[i]);
 		i++;
+		usleep(300);
 	}
 	i = 0;
 	while (i < alhay->num_philo)
