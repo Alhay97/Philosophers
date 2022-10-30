@@ -1,9 +1,18 @@
-#include <sys/time.h>
-#include <stdio.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   time.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/30 20:20:11 by aalhamel          #+#    #+#             */
+/*   Updated: 2022/10/30 20:21:07 by aalhamel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "Philo.h"
 
-long long current_time(void)
+long long	current_time(void)
 {
 	struct timeval now_time;
 
@@ -12,9 +21,9 @@ long long current_time(void)
 }
 
 // it checks if the differnce in time is more than the duration perimeter
-void alhai_sleep(int duration)
+void	alhai_sleep(int duration)
 {
-	long long start_time;
+	long long	start_time;
 	start_time = current_time();
 	while (current_time() - start_time < duration)
 		usleep(duration);

@@ -1,5 +1,16 @@
-#include "Philo.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/30 20:19:53 by aalhamel          #+#    #+#             */
+/*   Updated: 2022/10/30 20:21:32 by aalhamel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "Philo.h"
 
 int	check_sum(unsigned long sum, int sign, const char *str)
 {
@@ -51,9 +62,9 @@ void	ft_putchar_fd(int c, int fd)
 	write(fd, &c, 1);
 }
 
-void ft_putstr_fd(char *str, int fd)
+void	ft_putstr_fd(char *str, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

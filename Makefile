@@ -1,10 +1,11 @@
 NAME        := philo
 CC        := gcc
 FLAGS    := -g
-SRCS        =	time.c \
-                          philo1.c \
-                          parser.c \
-						  thread.c \
+SRCS        =			time.c \
+						philo1.c \
+						parser.c \
+						thread.c \
+						death.c \
 
 OBJS        = $(SRCS:.c=.o)
 

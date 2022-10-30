@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   thread.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/30 20:20:08 by aalhamel          #+#    #+#             */
+/*   Updated: 2022/10/30 20:32:05 by aalhamel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Philo.h"
 
-void mutex_create(t_alhai *alhay)
+void	mutex_create(t_alhai *alhay)
 {
-	int i = 0;
-	while (i < alhay->num_philo )
+	int	i;
+
+	i = 0;
+	while (i < alhay->num_philo)
 	{
 		pthread_mutex_init(&alhay->forks_mutex[i], NULL);
 		i++;
@@ -11,9 +25,9 @@ void mutex_create(t_alhai *alhay)
 	pthread_mutex_init(&alhay->mutex_print, NULL);
 }
 
-void *thread_func(void *data)
+void	*thread_func(void *data)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)data;
 	while (1)
@@ -24,19 +38,19 @@ void *thread_func(void *data)
 		drop_fork(philo);
 		philo_sleep(philo);
 		ft_print(philo,'t');
+		usleep(500);
 	}
-	return NULL;
+	return (NULL);
 }
 
-void ft_print(t_philo *philo, char c)
+void	ft_print(t_philo *philo, char c)
 {
-	long long starter;
+	long long	starter;
 
 	starter = current_time() - philo->alhai->start_time;
-
 	pthread_mutex_lock(&philo->alhai->mutex_print);
 	if (c == 's')
-		printf("\033[0;34m [%lld] philosopher %d is sleeping 😴\n", starter ,philo->index + 1);
+		printf("\033[0;34m [%lld] philosopher %d is sleeping 😴\n",starter ,philo->index + 1);
 	else if (c == 'e')
 		printf("\033[1;31m [%lld] philosopher %d is eating 🍽️ 😋 🍽️\n", starter ,philo->index + 1);
 	else if (c == 't')
@@ -51,9 +65,9 @@ void ft_print(t_philo *philo, char c)
 }
 
 
-void init_philo(t_alhai *alhay)
+void	init_philo(t_alhai *alhay)
 {
-	int i;
+	int	i;
 
 	alhay->forks = malloc(sizeof(int) * alhay->num_philo);
 	i = 0;
@@ -74,7 +88,7 @@ void init_philo(t_alhai *alhay)
 }
 
 //to check if the the two forks are being used
-int check_forks(t_philo *philo)
+int	check_forks(t_philo *philo)
 {
 
 	pthread_mutex_lock(&philo->alhai->forks_mutex[philo->left_fork]);
@@ -108,17 +122,17 @@ void	philo_eating(t_philo *philo)
 
 
 
-void athread(t_alhai *alhay)
+void	athread(t_alhai *alhay)
 {
-	int i;
-	i =0;
+	int	i;
+	i = 0;
 	alhay->start_time = current_time();
 	while (i < alhay->num_philo)
 	{
 		alhay->philo[i].last_meal = current_time();
     	pthread_create(&alhay->threadz[i], NULL, &thread_func, &alhay->philo[i]);
+		usleep(100);
 		i++;
-		usleep(300);
 	}
 	i = 0;
 	while (i < alhay->num_philo)
@@ -126,13 +140,13 @@ void athread(t_alhai *alhay)
 }
 
 //sleeping function
-void philo_sleep(t_philo *philo)
+void	philo_sleep(t_philo *philo)
 {
 	ft_print(philo,'s');
 	alhai_sleep(philo->alhai->time_sleep);
 }
 
- void drop_fork(t_philo *philo)
+ void	drop_fork(t_philo *philo)
  {
 	pthread_mutex_lock(&philo->alhai->forks_mutex[philo->right_fork]);
 	pthread_mutex_lock(&philo->alhai->forks_mutex[philo->left_fork]);
