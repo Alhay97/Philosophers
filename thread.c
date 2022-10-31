@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:20:08 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/10/30 20:32:05 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:14:11 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	init_philo(t_alhai *alhay)
 	{
 		alhay->philo[i].index = i;
 		alhay->philo[i].time_ate = 0;
+		alhay->philo[i].if_dead = 0;
 		alhay->philo[i].left_fork = i;
 		alhay->philo[i].right_fork =  i + 1;
 		alhay->forks[i] = 0;

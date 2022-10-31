@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:19:56 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/10/30 20:25:12 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:12:48 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_philo
 	int				right_fork;
 	unsigned int	time_ate;
 	struct s_alhai	*alhai;
+	int				if_dead;
 
 }	t_philo;
 
