@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:20:11 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/10/30 20:21:07 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/10/31 19:42:12 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,16 @@ long long	current_time(void)
 }
 
 // it checks if the differnce in time is more than the duration perimeter
-void	alhai_sleep(int duration)
+void	alhai_sleep(t_philo *philo,int duration)
 {
 	long long	start_time;
 	start_time = current_time();
 	while (current_time() - start_time < duration)
+	{
+		if ((current_time() - philo->last_meal) > (philo->alhai->time_die))
+		{
+			break;
+		}
 		usleep(duration);
+	}
 }

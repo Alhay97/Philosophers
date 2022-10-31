@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:20:08 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/10/31 16:11:49 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/10/31 19:43:43 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*thread_func(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
-	while (1)
+	while (*philo->death_flag == 0)
 	{
 		while (check_forks(philo) == 0)
 			usleep(50);
@@ -46,7 +46,11 @@ void	*thread_func(void *data)
 void	ft_print(t_philo *philo, char c)
 {
 	long long	starter;
-
+	
+	if(*philo->death_flag == 1)
+	{
+		return ;
+	}
 	starter = current_time() - philo->alhai->start_time;
 	pthread_mutex_lock(&philo->alhai->mutex_print);
 	if (c == 's')
@@ -76,7 +80,7 @@ void	init_philo(t_alhai *alhay)
 	alhay->if_dead = malloc(sizeof(int));
 	if (!alhay->if_dead)
 		return ;
-	alhay->if_dead = 0;
+	*alhay->if_dead = 0;
 	while (i < alhay->num_philo)
 	{
 		alhay->philo[i].index = i;
@@ -123,7 +127,7 @@ void	philo_eating(t_philo *philo)
 	ft_print(philo, 'p');
 	ft_print(philo, 'e');
 	philo->last_meal = current_time();
-	alhai_sleep(philo->alhai->time_eat);
+	alhai_sleep(philo ,philo->alhai->time_eat);
 	philo->time_ate++;
 }
 
@@ -142,6 +146,7 @@ void	athread(t_alhai *alhay)
 		i++;
 	}
 	i = 0;
+	killer(alhay);
 	while (i < alhay->num_philo)
 		pthread_join(alhay->threadz[i++], NULL);
 }
@@ -150,7 +155,7 @@ void	athread(t_alhai *alhay)
 void	philo_sleep(t_philo *philo)
 {
 	ft_print(philo,'s');
-	alhai_sleep(philo->alhai->time_sleep);
+	alhai_sleep(philo,philo->alhai->time_sleep);
 }
 
  void	drop_fork(t_philo *philo)
