@@ -17,7 +17,7 @@ void death_printer(t_philo *philo)
 {
     if(*philo->death_flag == 1)
         return;  
-	printf("\033[1;33m [%lld] philosopher %d is Dead 🪦\n", 
+	printf("\033[1;33m [%lld] philosopher %d is Dead\n", 
         current_time() - philo->alhai->start_time ,philo->index + 1);
 }
 
