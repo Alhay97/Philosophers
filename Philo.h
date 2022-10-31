@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:19:56 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/10/31 14:12:48 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:10:29 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_philo
 	int				left_fork;
 	int				right_fork;
 	unsigned int	time_ate;
+	int				*death_flag;
 	struct s_alhai	*alhai;
-	int				if_dead;
 
 }	t_philo;
 
@@ -40,6 +40,7 @@ typedef struct s_alhai
 	int				time_sleep;
 	int				num_cycle;
 	long long		start_time;
+	int				*if_dead;
 	int				*forks;
 	t_philo			philo[200];
 	pthread_mutex_t	forks_mutex[200];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:20:08 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/10/31 15:14:11 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:11:49 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,19 @@ void	init_philo(t_alhai *alhay)
 	int	i;
 
 	alhay->forks = malloc(sizeof(int) * alhay->num_philo);
+	if(!alhay->forks)
+		return ;
 	i = 0;
+	alhay->if_dead = malloc(sizeof(int));
+	if (!alhay->if_dead)
+		return ;
+	alhay->if_dead = 0;
 	while (i < alhay->num_philo)
 	{
 		alhay->philo[i].index = i;
 		alhay->philo[i].time_ate = 0;
-		alhay->philo[i].if_dead = 0;
 		alhay->philo[i].left_fork = i;
+		alhay->philo[i].death_flag = alhay->if_dead;
 		alhay->philo[i].right_fork =  i + 1;
 		alhay->forks[i] = 0;
 		alhay->philo[i].alhai = alhay;
