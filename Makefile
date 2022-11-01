@@ -6,6 +6,8 @@ SRCS        =			time.c \
 						parser.c \
 						thread.c \
 						death.c \
+						initiate.c\
+						print.c\
 
 OBJS        = $(SRCS:.c=.o)
 

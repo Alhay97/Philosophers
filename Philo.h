@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42abudhabi.a    +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:19:56 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/10/31 19:39:41 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:35:03 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,15 @@ int			check_sum(unsigned long sum, int sign, const char *str);
 
 int			ft_atoi(const char *str);
 
-void		ft_putchar_fd(int c, int fd);
-
-void		ft_putstr_fd(char *str, int fd);
-
-void		ft_putendl_fd(char *str, int fd);
-
 long long	current_time(void);
 
-void		alhai_sleep(t_philo *philo,int duration);
+void		alhai_sleep(t_philo *philo, int duration);
 
 void		mutex_create(t_alhai *alhay);
 
 int			death_checker(t_philo *philo);
 
-void 		killer(t_alhai *alhay);
+void		killer(t_alhai *alhay);
 
 void		death_printer(t_philo *philo);
 
