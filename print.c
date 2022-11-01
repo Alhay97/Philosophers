@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:36:28 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/01 17:40:17 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/01 20:16:00 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	ft_print(t_philo *philo, char c)
 	long long	starter;
 
 	if (*philo->death_flag == 1)
-	{
 		return ;
-	}
 	starter = current_time() - philo->alhai->start_time;
 	pthread_mutex_lock(&philo->alhai->mutex_print);
 	if (c == 's')
@@ -61,6 +59,7 @@ void	death_printer(t_philo *philo)
 {
 	if (*philo->death_flag == 1)
 		return ;
+	usleep(150);
 	printf("\033[1;33m [%lld] philosopher %d is Dead\n",
 		current_time() - philo->alhai->start_time, philo->index + 1);
 }

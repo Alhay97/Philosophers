@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:30:53 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/01 17:31:47 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/01 21:30:24 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	init_philo(t_alhai *alhay)
 		}
 		i++;
 	}
+
 }
 
 void	mutex_create(t_alhai *alhay)
@@ -52,4 +53,5 @@ void	mutex_create(t_alhai *alhay)
 		i++;
 	}
 	pthread_mutex_init(&alhay->mutex_print, NULL);
+	pthread_mutex_init(&alhay->mutex_death, NULL);
 }

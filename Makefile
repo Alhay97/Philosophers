@@ -1,6 +1,7 @@
 NAME        := philo
 CC        := gcc
-FLAGS    := -g
+CFLAGS    := -Wall -Werror -Wextra -g
+LIBS			= -lpthread
 SRCS        =			time.c \
 						philo1.c \
 						parser.c \
@@ -12,7 +13,7 @@ SRCS        =			time.c \
 OBJS        = $(SRCS:.c=.o)
 
 .c.o:
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 CLR_RMV		:= \033[0m
 RED		    := \033[1;31m
 GREEN		:= \033[1;32m
@@ -23,7 +24,7 @@ RM		    := rm -f
 
 ${NAME}:	${OBJS}
 			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			${CC} ${FLAGS} -o ${NAME} ${OBJS}
+			${CC} ${CFLAGS} ${OBJS} ${LIBS} -o ${NAME}
 			@echo "$(GREEN)$(NAME) created[0m ✔️"
 
 all:		${NAME}
