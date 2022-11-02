@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:19:44 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/01 20:29:29 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/02 12:45:00 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 int	death_checker(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->alhai->mutex_death);
 	if ((current_time() - philo->last_meal) > (philo->alhai->time_die))
 	{
+		pthread_mutex_unlock(&philo->alhai->mutex_death);
 		death_printer(philo);
 		pthread_mutex_lock(&philo->alhai->mutex_death);
 		*philo->death_flag = 1;
 		pthread_mutex_unlock(&philo->alhai->mutex_death);
 		return (1);
 	}
+	pthread_mutex_unlock(&philo->alhai->mutex_death);
 	return (0);
 }
 

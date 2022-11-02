@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   initiate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:30:53 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/01 21:30:24 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/02 12:53:06 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Philo.h"
+
+void	ft_swap(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
 
 void	init_philo(t_alhai *alhay)
 {
@@ -28,15 +38,25 @@ void	init_philo(t_alhai *alhay)
 	{
 		alhay->philo[i].index = i;
 		alhay->philo[i].time_ate = 0;
-		alhay->philo[i].left_fork = i;
+		// alhay->philo[i].left_fork = i;
 		alhay->philo[i].death_flag = alhay->if_dead;
-		alhay->philo[i].right_fork = i + 1;
+		// alhay->philo[i].right_fork = i + 1;
 		alhay->forks[i] = 0;
 		alhay->philo[i].alhai = alhay;
-		if (i == (alhay->num_philo -1))
-		{
-			alhay->philo[i].right_fork = 0;
-		}
+		// if (i == (alhay->num_philo -1))
+		// {
+		// 	alhay->philo[i].right_fork = 0;
+		// }
+
+		if ((alhay->num_philo - 1) == i)
+			alhay->philo[i].left_fork = 0;
+		else
+			alhay->philo[i].left_fork = i + 1;
+		alhay->philo[i].right_fork = i;
+		if (i % 2)
+			ft_swap(&alhay->philo[i].left_fork,
+				&alhay->philo[i].right_fork);
+
 		i++;
 	}
 
