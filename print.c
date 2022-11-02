@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhamel <aalhamel@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:36:28 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/02 13:08:41 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/02 22:13:35 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@ void	ft_print(t_philo *philo, char c)
 {
 	long long	starter;
 
+	pthread_mutex_lock(&philo->alhai->mutex_death);
 	if (*philo->death_flag == 1)
+	{
+		pthread_mutex_unlock(&philo->alhai->mutex_death);
 		return ;
+	}
+	pthread_mutex_unlock(&philo->alhai->mutex_death);
 	starter = current_time() - philo->alhai->start_time;
 	pthread_mutex_lock(&philo->alhai->mutex_print);
 	if (c == 's')
@@ -43,7 +48,9 @@ void	philo_eating(t_philo *philo)
 {
 	ft_print(philo, 'p');
 	ft_print(philo, 'e');
+	pthread_mutex_lock(&philo->alhai->mutex_eat);
 	philo->last_meal = current_time();
+	pthread_mutex_unlock(&philo->alhai->mutex_eat);
 	alhai_sleep(philo, philo->alhai->time_eat);
 	philo->time_ate++;
 }
@@ -60,6 +67,8 @@ void	death_printer(t_philo *philo)
 	if (*philo->death_flag == 1)
 		return ;
 	usleep(150);
+	pthread_mutex_lock(&philo->alhai->mutex_print);
 	printf("\033[1;33m [%lld] philosopher %d is Dead\n",
 		current_time() - philo->alhai->start_time, philo->index + 1);
+	pthread_mutex_unlock(&philo->alhai->mutex_print);
 }

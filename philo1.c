@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:19:59 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/01 21:32:17 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/02 19:03:30 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 int	main(int arc, char **arv)
 {
-	// int		i;
-	// int		ab[200];
 	t_alhai	alhai;
 	(void)arc;
 	if (ft_parser(arv, &alhai) == -1)

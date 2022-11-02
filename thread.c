@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:20:08 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/01 18:30:28 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/02 22:09:54 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	*thread_func(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
+	pthread_mutex_lock(&philo->alhai->mutex_death);
 	while (*philo->death_flag == 0)
 	{
+		pthread_mutex_unlock(&philo->alhai->mutex_death);
 		while (check_forks(philo) == 0)
 			usleep(50);
 		philo_eating(philo);
@@ -26,7 +28,9 @@ void	*thread_func(void *data)
 		philo_sleep(philo);
 		ft_print(philo, 't');
 		usleep(500);
+		pthread_mutex_lock(&philo->alhai->mutex_death);
 	}
+	pthread_mutex_unlock(&philo->alhai->mutex_death);
 	return (NULL);
 }
 
@@ -53,14 +57,14 @@ void	athread(t_alhai *alhay)
 //to check if the the two forks are being used
 int	check_forks(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->alhai->forks_mutex[philo->left_fork]);
-	if (philo->alhai->forks[philo->left_fork] == 1)
-	{
-		pthread_mutex_unlock(&philo->alhai->forks_mutex[philo->left_fork]);
-		return (0);
-	}
 	pthread_mutex_lock(&philo->alhai->forks_mutex[philo->right_fork]);
 	if (philo->alhai->forks[philo->right_fork] == 1)
+	{
+		pthread_mutex_unlock(&philo->alhai->forks_mutex[philo->right_fork]);
+		return (0);
+	}
+	pthread_mutex_lock(&philo->alhai->forks_mutex[philo->left_fork]);
+	if (philo->alhai->forks[philo->left_fork] == 1)
 	{
 		pthread_mutex_unlock(&philo->alhai->forks_mutex[philo->right_fork]);
 		pthread_mutex_unlock(&philo->alhai->forks_mutex[philo->left_fork]);
@@ -77,8 +81,8 @@ void	drop_fork(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->alhai->forks_mutex[philo->right_fork]);
 	pthread_mutex_lock(&philo->alhai->forks_mutex[philo->left_fork]);
-	philo->alhai->forks[philo->left_fork] = 0;
 	philo->alhai->forks[philo->right_fork] = 0;
+	philo->alhai->forks[philo->left_fork] = 0;
 	pthread_mutex_unlock(&philo->alhai->forks_mutex[philo->right_fork]);
 	pthread_mutex_unlock(&philo->alhai->forks_mutex[philo->left_fork]);
 }

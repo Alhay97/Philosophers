@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:19:56 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/01 20:13:45 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/02 19:11:17 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ typedef struct s_alhai
 	int				*if_dead;
 	int				*forks;
 	t_philo			philo[200];
+	int				all_eat;
 	pthread_mutex_t	forks_mutex[200];
 	pthread_mutex_t	mutex_print;
 	pthread_mutex_t mutex_death;
+	pthread_mutex_t	mutex_eat;
 }	t_alhai;
 
 void		drop_fork(t_philo *philo);
