@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:20:08 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/02 22:09:54 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:54:15 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*thread_func(void *data)
 
 	philo = (t_philo *)data;
 	pthread_mutex_lock(&philo->alhai->mutex_death);
-	while (*philo->death_flag == 0)
+	while (*philo->death_flag == 0 && philo->all_eat == 0)
 	{
 		pthread_mutex_unlock(&philo->alhai->mutex_death);
 		while (check_forks(philo) == 0)

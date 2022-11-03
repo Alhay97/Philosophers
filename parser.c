@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:19:53 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/01 17:33:14 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:35:46 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	ft_parser(char **arv, t_alhai *alhai)
 	if (alhai->num_philo <= 0 || alhai->time_die <= 60 || alhai->time_eat <= 60
 		|| alhai->num_philo > 200 || alhai->time_sleep <= 60)
 		return (0);
+
 	return (1);
 }
 

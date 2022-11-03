@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:36:28 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/02 22:13:35 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:53:55 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ void	philo_eating(t_philo *philo)
 	pthread_mutex_unlock(&philo->alhai->mutex_eat);
 	alhai_sleep(philo, philo->alhai->time_eat);
 	philo->time_ate++;
+	if (philo->time_ate >= philo->alhai->num_cycle)
+	{
+		philo->all_eat = 1;
+	}
 }
 
 //sleeping function

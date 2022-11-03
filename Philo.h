@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:19:56 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/02 19:11:17 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:52:58 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_philo
 	long long		last_meal;
 	int				left_fork;
 	int				right_fork;
+	int				all_eat;
 	unsigned int	time_ate;
 	int				*death_flag;
 	struct s_alhai	*alhai;
@@ -38,12 +39,11 @@ typedef struct s_alhai
 	int				time_die;
 	int				time_eat;
 	int				time_sleep;
-	int				num_cycle;
+	unsigned int	num_cycle;
 	long long		start_time;
 	int				*if_dead;
 	int				*forks;
 	t_philo			philo[200];
-	int				all_eat;
 	pthread_mutex_t	forks_mutex[200];
 	pthread_mutex_t	mutex_print;
 	pthread_mutex_t mutex_death;

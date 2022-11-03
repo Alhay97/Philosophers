@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:19:44 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/02 22:17:42 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:53:15 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	killer(t_alhai *alhay)
 
 	i = 0;
 	pthread_mutex_lock(&alhay->mutex_death);
-	while (!*alhay->if_dead)
+	while (!*alhay->if_dead && alhay->philo->all_eat == 0)
 	{
 		pthread_mutex_unlock(&alhay->mutex_death);
 		while (i < alhay->num_philo)

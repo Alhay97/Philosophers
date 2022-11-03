@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:30:53 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/02 19:11:26 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:53:39 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_philo(t_alhai *alhay)
 	int	i;
 
 	alhay->forks = malloc (sizeof(int) * alhay->num_philo);
+	alhay->philo->all_eat = 0;
 	if (!alhay->forks)
 		return ;
 	i = 0;
