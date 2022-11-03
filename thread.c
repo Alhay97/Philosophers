@@ -6,17 +6,29 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:20:08 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/03 18:54:15 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:42:12 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Philo.h"
+
+void only_one(t_philo *philo)
+{
+	while(*philo->death_flag == 0)
+	{
+		usleep(50);
+	}
+}
 
 void	*thread_func(void *data)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
+	if (philo->alhai->num_philo == 1)
+	{
+		only_one(philo);
+	}
 	pthread_mutex_lock(&philo->alhai->mutex_death);
 	while (*philo->death_flag == 0 && philo->all_eat == 0)
 	{
@@ -54,7 +66,7 @@ void	athread(t_alhai *alhay)
 		pthread_join(alhay->threadz[i++], NULL);
 }
 
-//to check if the the two forks are being used
+/* to check if the the two forks are being used */
 int	check_forks(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->alhai->forks_mutex[philo->right_fork]);
