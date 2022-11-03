@@ -6,7 +6,7 @@
 /*   By: aalhamel <aalhamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:30:53 by aalhamel          #+#    #+#             */
-/*   Updated: 2022/11/03 18:53:39 by aalhamel         ###   ########.fr       */
+/*   Updated: 2022/11/03 21:00:54 by aalhamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	init_philo(t_alhai *alhay)
 	int	i;
 
 	alhay->forks = malloc (sizeof(int) * alhay->num_philo);
-	alhay->philo->all_eat = 0;
 	if (!alhay->forks)
 		return ;
 	i = 0;
@@ -37,6 +36,7 @@ void	init_philo(t_alhai *alhay)
 	*alhay->if_dead = 0;
 	while (i < alhay->num_philo)
 	{
+		alhay->philo[i].all_eat = 0;
 		alhay->philo[i].index = i;
 		alhay->philo[i].time_ate = 0;
 		alhay->philo[i].death_flag = alhay->if_dead;
